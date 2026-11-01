@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MakeMyTrip Clone - Flight & Hotel Bookings</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <img src="https://mmtcdn.com" alt="MakeMyTrip Logo">
+            </a>
+            
+            <nav class="user-menu">
+                <div class="menu-item offers">
+                    <i class="fa-solid fa-tags"></i>
+                    <div>
+                        <p class="title">Super Offers</p>
+                        <p class="subtitle">Explore great deals</p>
+                    </div>
+                </div>
+                <div class="menu-item business">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <div>
+                        <p class="title">Introducing myBiz</p>
+                        <p class="subtitle">Business Travel Solution</p>
+                    </div>
+                </div>
+                <div class="menu-item trips">
+                    <i class="fa-solid fa-suitcase"></i>
+                    <div>
+                        <p class="title">My Trips</p>
+                        <p class="subtitle">Manage Bookings</p>
+                    </div>
+                </div>
+                <button class="login-btn"><i class="fa-solid fa-user"></i> Login or Create Account</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Booking Section -->
+    <main class="booking-wrapper">
+        <div class="booking-container">
+            
+            <!-- Category Navigation Menu -->
+            <nav class="category-nav">
+                <ul>
+                    <li class="active"><a href="#"><i class="fa-solid fa-plane"></i><span>Flights</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-hotel"></i><span>Hotels</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-house"></i><span>Homestays</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-train"></i><span>Trains</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-bus"></i><span>Buses</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-car"></i><span>Cabs</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-earth-americas"></i><span>Holidays</span></a></li>
+                </ul>
+            </nav>
+
+            <!-- Search Card Container -->
+            <div class="search-card">
+                <!-- Trip Type Radio Buttons -->
+                <div class="trip-type">
+                    <label class="radio-label">
+                        <input type="radio" name="trip" checked>
+                        <span class="custom-radio"></span> One Way
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="trip">
+                        <span class="custom-radio"></span> Round Trip
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="trip">
+                        <span class="custom-radio"></span> Multi City
+                    </label>
+                </div>
+
+                <!-- Input Fields Grid Layout -->
+                <div class="search-inputs-grid">
+                    <div class="input-box clickable">
+                        <span class="label">From</span>
+                        <p class="city">Delhi</p>
+                        <span class="airport">DEL, Delhi Airport India</span>
+                    </div>
+                    
+                    <div class="swap-icon">
+                        <i class="fa-solid fa-right-left"></i>
+                    </div>
+
+                    <div class="input-box clickable">
+                        <span class="label">To</span>
+                        <p class="city">Mumbai</p>
+                        <span class="airport">BOM, Chhatrapati Shivaji Int'l</span>
+                    </div>
+
+                    <div class="input-box clickable">
+                        <span class="label">Departure <i class="fa-solid fa-chevron-down"></i></span>
+                        <p class="date">05 <span class="month">Nov'26</span></p>
+                        <span class="day">Thursday</span>
+                    </div>
+
+                    <div class="input-box clickable disabled">
+                        <span class="label">Return <i class="fa-solid fa-chevron-down"></i></span>
+                        <p class="date-placeholder">Book a round trip to save more</p>
+                    </div>
+
+                    <div class="input-box clickable">
+                        <span class="label">Travellers & Class <i class="fa-solid fa-chevron-down"></i></span>
+                        <p class="city">1 <span class="class-type">Traveller</span></p>
+                        <span class="airport">Economy/Premium Economy</span>
+                    </div>
+                </div>
+
+                <!-- Fare Types Selection -->
+                <div class="fare-types">
+                    <span class="fare-label">Select a special fare:</span>
+                    <span class="badge active">Regular Fares</span>
+                    <span class="badge">Armed Forces</span>
+                    <span class="badge">Student Fares</span>
+                    <span class="badge">Senior Citizen</span>
+                </div>
+
+                <!-- Central Search Action Button -->
+                <div class="search-btn-container">
+                    <button class="main-search-btn">SEARCH</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Promotional Offers Section -->
+    <section class="offers-section">
+        <div class="section-container">
+            <h2 class="section-title">Offers For You</h2>
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <img src="https://makemytrip.com" alt="Offer 1">
+                    <div class="offer-details">
+                        <span class="tag">International Flights</span>
+                        <h3>Grab Up to 25% OFF* on Flights to Maldives</h3>
+                        <p>Limited period offer. Book your dream escape today!</p>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <img src="https://makemytrip.com" alt="Offer 2">
+                    <div class="offer-details">
+                        <span class="tag">Domestic Hotels</span>
+                        <h3>Stay in Luxury: Flat 20% OFF using ICICI Cards</h3>
+                        <p>Applicable on top premium domestic resort listings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Destinations Showcase -->
+    <section class="destinations-section">
+        <div class="section-container">
+            <h2 class="section-title">Trending Destinations</h2>
+            <div class="destinations-grid">
+                <div class="dest-card">
+                    <div class="img-wrapper">
+                        <img src="https://unsplash.com" alt="Goa">
+                    </div>
+                    <div class="dest-info">
+                        <h3>Goa</h3>
+                        <p>Beachside Paradise</p>
+                    </div>
+                </div>
+                <div class="dest-card">
+                    <div class="img-wrapper">
+                        <img src="https://unsplash.com" alt="Dubai">
+                    </div>
+                    <div class="dest-info">
+                        <h3>Dubai</h3>
+                        <p>Modern Architectural Wonder</p>
+                    </div>
+                </div>
+                <div class="dest-card">
+                    <div class="img-wrapper">
+                        <img src="https://unsplash.com" alt="Agra">
+                    </div>
+                    <div class="dest-info">
+                        <h3>Agra</h3>
+                        <p>Home of the iconic Taj Mahal</p>
+                    </div>
+                </div>
+                <div class="dest-card">
+                    <div class="img-wrapper">
+                        <img src="https://unsplash.com" alt="London">
+                    </div>
+                    <div class="dest-info">
+                        <h3>London</h3>
+                        <p>Heritage & Culture Hub</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
