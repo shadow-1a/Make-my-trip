@@ -1,207 +1,445 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MakeMyTrip Clone - Flight & Hotel Bookings</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cloudflare.com">
-</head>
-<body>
+/* Custom Global Properties and Variables */
+:root {
+    --accent-indigo: #4f46e5;
+    --accent-indigo-hover: #4338ca;
+    --surface-white: #ffffff;
+    --canvas-bg: #f8fafc;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --border-light: #e2e8f0;
+}
 
-    <!-- Header Navigation -->
-    <header class="header">
-        <div class="header-container">
-            <a href="#" class="logo">
-                <img src="https://mmtcdn.com" alt="MakeMyTrip Logo">
-            </a>
-            
-            <nav class="user-menu">
-                <div class="menu-item offers">
-                    <i class="fa-solid fa-tags"></i>
-                    <div>
-                        <p class="title">Super Offers</p>
-                        <p class="subtitle">Explore great deals</p>
-                    </div>
-                </div>
-                <div class="menu-item business">
-                    <i class="fa-solid fa-briefcase"></i>
-                    <div>
-                        <p class="title">Introducing myBiz</p>
-                        <p class="subtitle">Business Travel Solution</p>
-                    </div>
-                </div>
-                <div class="menu-item trips">
-                    <i class="fa-solid fa-suitcase"></i>
-                    <div>
-                        <p class="title">My Trips</p>
-                        <p class="subtitle">Manage Bookings</p>
-                    </div>
-                </div>
-                <button class="login-btn"><i class="fa-solid fa-user"></i> Login or Create Account</button>
-            </nav>
-        </div>
-    </header>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
 
-    <!-- Main Booking Section -->
-    <main class="booking-wrapper">
-        <div class="booking-container">
-            
-            <!-- Category Navigation Menu -->
-            <nav class="category-nav">
-                <ul>
-                    <li class="active"><a href="#"><i class="fa-solid fa-plane"></i><span>Flights</span></a></li>
-                    <li><a href="#"><i class="fa-solid fa-hotel"></i><span>Hotels</span></a></li>
-                    <li><a href="#"><i class="fa-solid fa-house"></i><span>Homestays</span></a></li>
-                    <li><a href="#"><i class="fa-solid fa-train"></i><span>Trains</span></a></li>
-                    <li><a href="#"><i class="fa-solid fa-bus"></i><span>Buses</span></a></li>
-                    <li><a href="#"><i class="fa-solid fa-car"></i><span>Cabs</span></a></li>
-                    <li><a href="#"><i class="fa-solid fa-earth-americas"></i><span>Holidays</span></a></li>
-                </ul>
-            </nav>
+body {
+    background-color: var(--canvas-bg);
+    color: var(--text-primary);
+}
 
-            <!-- Search Card Container -->
-            <div class="search-card">
-                <!-- Trip Type Radio Buttons -->
-                <div class="trip-type">
-                    <label class="radio-label">
-                        <input type="radio" name="trip" checked>
-                        <span class="custom-radio"></span> One Way
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="trip">
-                        <span class="custom-radio"></span> Round Trip
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="trip">
-                        <span class="custom-radio"></span> Multi City
-                    </label>
-                </div>
+/* Navigation Layout Element Container */
+.navbar {
+    background-color: var(--surface-white);
+    border-bottom: 1px solid var(--border-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
-                <!-- Input Fields Grid Layout -->
-                <div class="search-inputs-grid">
-                    <div class="input-box clickable">
-                        <span class="label">From</span>
-                        <p class="city">Delhi</p>
-                        <span class="airport">DEL, Delhi Airport India</span>
-                    </div>
-                    
-                    <div class="swap-icon">
-                        <i class="fa-solid fa-right-left"></i>
-                    </div>
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-                    <div class="input-box clickable">
-                        <span class="label">To</span>
-                        <p class="city">Mumbai</p>
-                        <span class="airport">BOM, Chhatrapati Shivaji Int'l</span>
-                    </div>
+.brand-logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--accent-indigo);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
-                    <div class="input-box clickable">
-                        <span class="label">Departure <i class="fa-solid fa-chevron-down"></i></span>
-                        <p class="date">05 <span class="month">Nov'26</span></p>
-                        <span class="day">Thursday</span>
-                    </div>
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
 
-                    <div class="input-box clickable disabled">
-                        <span class="label">Return <i class="fa-solid fa-chevron-down"></i></span>
-                        <p class="date-placeholder">Book a round trip to save more</p>
-                    </div>
+.nav-link {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.2s;
+}
 
-                    <div class="input-box clickable">
-                        <span class="label">Travellers & Class <i class="fa-solid fa-chevron-down"></i></span>
-                        <p class="city">1 <span class="class-type">Traveller</span></p>
-                        <span class="airport">Economy/Premium Economy</span>
-                    </div>
-                </div>
+.nav-link.active, .nav-link:hover {
+    color: var(--accent-indigo);
+    background-color: #eeebff;
+}
 
-                <!-- Fare Types Selection -->
-                <div class="fare-types">
-                    <span class="fare-label">Select a special fare:</span>
-                    <span class="badge active">Regular Fares</span>
-                    <span class="badge">Armed Forces</span>
-                    <span class="badge">Student Fares</span>
-                    <span class="badge">Senior Citizen</span>
-                </div>
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
 
-                <!-- Central Search Action Button -->
-                <div class="search-btn-container">
-                    <button class="main-search-btn">SEARCH</button>
-                </div>
-            </div>
+.currency-selector {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
 
-        </div>
-    </main>
+.auth-btn {
+    background-color: var(--text-primary);
+    color: var(--surface-white);
+    border: none;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 0.2s;
+}
 
-    <!-- Promotional Offers Section -->
-    <section class="offers-section">
-        <div class="section-container">
-            <h2 class="section-title">Offers For You</h2>
-            <div class="offers-grid">
-                <div class="offer-card">
-                    <img src="https://makemytrip.com" alt="Offer 1">
-                    <div class="offer-details">
-                        <span class="tag">International Flights</span>
-                        <h3>Grab Up to 25% OFF* on Flights to Maldives</h3>
-                        <p>Limited period offer. Book your dream escape today!</p>
-                    </div>
-                </div>
-                <div class="offer-card">
-                    <img src="https://makemytrip.com" alt="Offer 2">
-                    <div class="offer-details">
-                        <span class="tag">Domestic Hotels</span>
-                        <h3>Stay in Luxury: Flat 20% OFF using ICICI Cards</h3>
-                        <p>Applicable on top premium domestic resort listings.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+.auth-btn:hover {
+    background-color: #334155;
+}
 
-    <!-- Trending Destinations Showcase -->
-    <section class="destinations-section">
-        <div class="section-container">
-            <h2 class="section-title">Trending Destinations</h2>
-            <div class="destinations-grid">
-                <div class="dest-card">
-                    <div class="img-wrapper">
-                        <img src="https://unsplash.com" alt="Goa">
-                    </div>
-                    <div class="dest-info">
-                        <h3>Goa</h3>
-                        <p>Beachside Paradise</p>
-                    </div>
-                </div>
-                <div class="dest-card">
-                    <div class="img-wrapper">
-                        <img src="https://unsplash.com" alt="Dubai">
-                    </div>
-                    <div class="dest-info">
-                        <h3>Dubai</h3>
-                        <p>Modern Architectural Wonder</p>
-                    </div>
-                </div>
-                <div class="dest-card">
-                    <div class="img-wrapper">
-                        <img src="https://unsplash.com" alt="Agra">
-                    </div>
-                    <div class="dest-info">
-                        <h3>Agra</h3>
-                        <p>Home of the iconic Taj Mahal</p>
-                    </div>
-                </div>
-                <div class="dest-card">
-                    <div class="img-wrapper">
-                        <img src="https://unsplash.com" alt="London">
-                    </div>
-                    <div class="dest-info">
-                        <h3>London</h3>
-                        <p>Heritage & Culture Hub</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+/* Background Image Showcase Box */
+.hero-section {
+    position: relative;
+    background-image: url('https://unsplash.com');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px 140px 20px;
+    text-align: center;
+    color: var(--surface-white);
+}
 
-</body>
-</html>
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.4));
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+/* Module Box Search Frame Container */
+.search-panel {
+    background-color: var(--surface-white);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    color: var(--text-primary);
+    text-align: left;
+}
+
+.panel-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 10px;
+}
+
+.tab-item {
+    background: none;
+    border: none;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.tab-item.active {
+    color: var(--accent-indigo);
+    background-color: #eeebff;
+}
+
+.search-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.8fr 1fr auto;
+    gap: 15px;
+    align-items: end;
+}
+
+.search-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.search-field label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.search-field input, .search-field select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--text-primary);
+    font-weight: 600;
+    outline: none;
+    background-color: #fafafa;
+}
+
+.search-execute-btn {
+    background-color: var(--accent-indigo);
+    color: var(--surface-white);
+    border: none;
+    padding: 14px 28px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-execute-btn:hover {
+    background-color: var(--accent-indigo-hover);
+}
+
+/* Context Area Grid Framework wrapper */
+.main-content {
+    max-width: 1200px;
+    margin: -40px auto 60px auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.block-title {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.promo-section {
+    margin-bottom: 50px;
+}
+
+.promo-container {
+    display: flex;
+    gap: 20px;
+}
+
+.promo-banner {
+    flex: 1;
+    border-radius: 12px;
+    padding: 25px;
+    color: var(--surface-white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-blue {
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+}
+
+.card-orange {
+    background: linear-gradient(135deg, #7c2d12, #ea580c);
+}
+
+.badge-tag {
+    background-color: rgba(255,255,255,0.2);
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.promo-text h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.promo-text p {
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+.promo-btn {
+    background-color: var(--surface-white);
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+/* Standard Destinations Grid Configuration */
+.routes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.route-card {
+    background-color: var(--surface-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-light);
+}
+
+.card-img-box {
+    position: relative;
+    height: 200px;
+}
+
+.card-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.price-tag {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background-color: rgba(15, 23, 42, 0.85);
+    color: var(--surface-white);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-body h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.card-body p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Structural Footer Properties styling block */
+.site-footer {
+    background-color: var(--text-primary);
+    color: #94a3b8;
+    padding: 60px 20px 30px 20px;
+    margin-top: 40px;
+}
+
+.footer-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 40px;
+}
+
+.footer-branding h3 {
+    color: var(--surface-white);
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.footer-branding p {
+    font-size: 14px;
+    max-width: 400px;
+    line-height: 1.6;
+}
+
+.footer-links-group h4 {
+    color: var(--surface-white);
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer-links-group a {
+    display: block;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.footer-links-group a:hover {
+    color: var(--surface-white);
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 20px auto 0 auto;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* Media Query Adaptations for Viewports */
+@media(max-width: 1024px) {
+    .search-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .search-execute-btn {
+        grid-column: span 2;
+        width: 100%;
+        justify-content: center;
+    }
+    .promo-container {
+        flex-direction: column;
+    }
+    .routes-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    .footer-wrap {
+        grid-template-columns: 1fr;
+    }
+    .hero-content h1 {
+        font-size: 28px;
+    }
+}
